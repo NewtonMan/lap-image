@@ -4,11 +4,6 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-  LAP_ACR: '$(ACR-SERVICE-CONNECTION)'
-  LAP_ACR_REPOSITORY: '$(ACR-REPOSITORY-NAME)'
-  LAP_ACR_IMAGE_TAG: '$(Build.SourceBranchName)' # Use branch as image tag
-
 steps:
   - checkout: self
 
@@ -21,7 +16,7 @@ steps:
     displayName: Docker Build/Publish
     inputs:
       command: 'buildAndPush'
-      containerRegistry: $(LAP_ACR)
-      repository: $(LAP_ACR_REPOSITORY)
-      tags: $(LAP_ACR_IMAGE_TAG)
+      containerRegistry: $(ACR-SERVICE-CONNECTION)
+      repository: $(ACR-REPOSITORY-NAME)
+      tags: $(Build.SourceBranchName)
       Dockerfile: '**/Dockerfile'
