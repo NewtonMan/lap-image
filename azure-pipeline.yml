@@ -5,8 +5,8 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  LAP_ACR: 'ACR-SERVICE-CONNECTION'
-  LAP_ACR_REPOSITORY: 'ACR-REPOSITORY-NAME'
+  LAP_ACR: '$(ACR-SERVICE-CONNECTION)'
+  LAP_ACR_REPOSITORY: '$(ACR-REPOSITORY-NAME)'
   LAP_ACR_IMAGE_TAG: '$(Build.SourceBranchName)' # Use branch as image tag
 
 steps:
